@@ -113,10 +113,7 @@ func main() {
 		}
 	}
 
-	fmt.Printf("this is data : %v\n", data)
-	fmt.Printf("this is N : %v\n", N)
 	uf := NewUnionFind(N)
-	fmt.Printf("this is uf: %v\n", uf)
 	// Simulating the while loop equivalent in Go
 	index := 1
 	for index < len(data) {
@@ -126,7 +123,6 @@ func main() {
 
 		if !uf.Connected(p, q) {
 			uf.Union(p, q)
-			fmt.Printf("p: %v, q: %v\n", p, q)
 		}
 	}
 	fmt.Printf("Number of connected components: %v\n", uf.CountComponents())
