@@ -25,7 +25,7 @@ func (stack *ResizingArrayStackOfStrings) isEmpty() bool {
 
 func (stack *ResizingArrayStackOfStrings) Push(item string) {
 	if stack.N == len(stack.s) {
-		stack.resize(2 * len(stack.s))
+		stack.Resize(2 * len(stack.s))
 	}
 	stack.s[stack.N] = item
 	stack.N++
@@ -39,12 +39,12 @@ func (stack *ResizingArrayStackOfStrings) Pop() (string, error) {
 	item := stack.s[stack.N]
 	stack.s[stack.N] = ""
 	if stack.N > 0 && stack.N == len(stack.s)/4 {
-		stack.resize(len(stack.s) / 2)
+		stack.Resize(len(stack.s) / 2)
 	}
 	return item, nil
 }
 
-func (stack *ResizingArrayStackOfStrings) resize(capacity int) {
+func (stack *ResizingArrayStackOfStrings) Resize(capacity int) {
 	copy := make([]string, capacity)
 	for i := 0; i < stack.N; i++ {
 		copy[i] = stack.s[i]
